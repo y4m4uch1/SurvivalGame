@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ev0yay4eq5o4"]
+
+[ext_resource type="Script" uid="uid://ctoca8eh1un12" path="res://GUI/Map/map_view.gd" id="1_8xius"]
+
+[node name="MapView" type="Node2D"]
+script = ExtResource("1_8xius")
+
+[node name="MapCamera" type="Camera2D" parent="."]
