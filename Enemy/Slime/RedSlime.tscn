@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdnh22fwrtvwe"]
+
+[ext_resource type="Texture2D" uid="uid://dlcddvnyn2s7s" path="res://World/Enemy/Slime/RedSlime.png" id="1_4d7l7"]
+[ext_resource type="Script" uid="uid://d3ww7pa5nyxjk" path="res://World/Enemy/Slime/red_slime.gd" id="1_b6pv8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b6pv8"]
+radius = 9.05539
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_co4t6"]
+radius = 27.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3t5au"]
+radius = 279.351
+
+[node name="RedSlime" type="CharacterBody2D"]
+z_index = 2
+y_sort_enabled = true
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_b6pv8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_4d7l7")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b6pv8")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_co4t6")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_3t5au")
