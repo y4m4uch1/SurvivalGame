@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://kx3pr0ixmpi5"]
+
+[ext_resource type="Script" uid="uid://cg3a7rsgbaost" path="res://GUI/Chest/chestUI.gd" id="1_nmff5"]
+
+[node name="ChestUI" type="CanvasLayer"]
+script = ExtResource("1_nmff5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -687.5
+offset_top = -169.5
+offset_right = 687.5
+offset_bottom = 169.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0.454372, 0.00228823, 0.0119614, 1)
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 22.0
+offset_right = 764.0
+offset_bottom = 62.0
+columns = 5
+
+[node name="GridContainer2" type="GridContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 20.0
+offset_right = 54.0
+offset_bottom = 60.0
+columns = 5
