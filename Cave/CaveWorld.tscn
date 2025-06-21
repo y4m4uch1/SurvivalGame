@@ -1,0 +1,109 @@
+[gd_scene load_steps=17 format=3 uid="uid://duey3u6yr7fha"]
+
+[ext_resource type="Texture2D" uid="uid://l6d6qhfvutya" path="res://World/Cave/CaveTileSet.png" id="1_sa3xn"]
+[ext_resource type="Script" uid="uid://4dlcuts2jeoc" path="res://World/Cave/cave_generation.gd" id="2_1bmq7"]
+[ext_resource type="Script" uid="uid://bptp4ypt200y2" path="res://World/Cave/spawn_cave_obj.gd" id="3_5uqyq"]
+[ext_resource type="PackedScene" uid="uid://fyiurwgmgnjc" path="res://World/Cave/CaveEntrance.tscn" id="4_g70qr"]
+[ext_resource type="PackedScene" uid="uid://bpy3r271cesl" path="res://GUI/Inventory/Item.tscn" id="5_g70qr"]
+[ext_resource type="PackedScene" path="res://World/Cave/GoldOre/GoldOre.tscn" id="6_emu34"]
+[ext_resource type="PackedScene" uid="uid://br11471kjsr7d" path="res://World/Cave/IronOre/IronOre.tscn" id="7_8pobc"]
+[ext_resource type="PackedScene" uid="uid://d2yvm5utkyjsw" path="res://World/Desert/Sand/SandPile.tscn" id="8_y86mq"]
+[ext_resource type="PackedScene" uid="uid://drnvyugaou576" path="res://World/Swamp/Mud/MudPile.tscn" id="9_3bfvm"]
+[ext_resource type="PackedScene" uid="uid://dctdtk0i4j638" path="res://World/Cave/DiamondOre/DiamondOre.tscn" id="10_3bfvm"]
+[ext_resource type="PackedScene" uid="uid://cunaeoi68mra1" path="res://World/Cave/Coal/Coal.tscn" id="10_p6sqv"]
+[ext_resource type="PackedScene" uid="uid://cdnh22fwrtvwe" path="res://World/Enemy/Slime/RedSlime.tscn" id="11_6sn7t"]
+[ext_resource type="PackedScene" uid="uid://j5wowlvpitml" path="res://World/Enemy/Boss/Undefeated/UndefeatedTotem.tscn" id="12_emfnr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f45wo"]
+texture = ExtResource("1_sa3xn")
+0:19/0 = 0
+7:14/0 = 0
+4:16/0 = 0
+4:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_1bmq7"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_f45wo")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uqyq"]
+size = Vector2(2.5, 3207.94)
+
+[node name="CaveWorld" type="TileMap"]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_1bmq7")
+format = 2
+script = ExtResource("2_1bmq7")
+
+[node name="CaveEntrance" type="Node2D" parent="."]
+script = ExtResource("3_5uqyq")
+entity_scene = ExtResource("4_g70qr")
+spawn_coordinates = Array[Vector2]([Vector2(20, 20)])
+spawn_count = 1
+
+[node name="BlueFlowerContainer" type="Node2D" parent="."]
+script = ExtResource("3_5uqyq")
+entity_scene = ExtResource("5_g70qr")
+spawn_count = 30
+item_name = "BlueFlower"
+
+[node name="GoldContainer" type="Node2D" parent="."]
+script = ExtResource("3_5uqyq")
+entity_scene = ExtResource("6_emu34")
+spawn_count = 40
+
+[node name="IronContainer" type="Node2D" parent="."]
+script = ExtResource("3_5uqyq")
+entity_scene = ExtResource("7_8pobc")
+spawn_count = 40
+
+[node name="SandContainer" type="Node2D" parent="."]
+script = ExtResource("3_5uqyq")
+entity_scene = ExtResource("8_y86mq")
+spawn_count = 40
+
+[node name="MudContainer" type="Node2D" parent="."]
+script = ExtResource("3_5uqyq")
+entity_scene = ExtResource("9_3bfvm")
+spawn_count = 40
+
+[node name="CoalContainer" type="Node2D" parent="."]
+script = ExtResource("3_5uqyq")
+entity_scene = ExtResource("10_p6sqv")
+
+[node name="DiamondContainer" type="Node2D" parent="."]
+script = ExtResource("3_5uqyq")
+entity_scene = ExtResource("10_3bfvm")
+spawn_count = 5
+
+[node name="RedSlimeContainer" type="Node2D" parent="."]
+script = ExtResource("3_5uqyq")
+entity_scene = ExtResource("11_6sn7t")
+spawn_count = 100
+
+[node name="BossTotem" type="Node2D" parent="."]
+script = ExtResource("3_5uqyq")
+entity_scene = ExtResource("12_emfnr")
+spawn_count = 1
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(-3, 1600.03)
+shape = SubResource("RectangleShape2D_5uqyq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(1601, 3194)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_5uqyq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(1601, -4)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_5uqyq")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(3203, 1599)
+shape = SubResource("RectangleShape2D_5uqyq")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0338533, 0.0338533, 0.0338533, 1)

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://br11471kjsr7d"]
+
+[ext_resource type="Script" uid="uid://yxg7n0wgbsnr" path="res://World/Cave/IronOre/iron_mine.gd" id="1_3q11d"]
+[ext_resource type="Texture2D" uid="uid://bje3bbfmhehxi" path="res://World/Cave/IronOre/Sprites/IronOre.png" id="1_6v4gw"]
+[ext_resource type="AudioStream" uid="uid://8et3myteoxcl" path="res://World/Rock/HittingRockSound.wav" id="3_k274b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3q11d"]
+radius = 16.0312
+
+[node name="IronOre" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_3q11d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1, -17)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("1_6v4gw")
+offset = Vector2(0, 90)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_3q11d")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_k274b")
