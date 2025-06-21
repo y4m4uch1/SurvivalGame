@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3 uid="uid://cgqkpk5e01kah"]
+
+[ext_resource type="Script" uid="uid://cvp616b6ivr4j" path="res://World/Enemy/DesertEnemy/Scopio/scopio.gd" id="1_je4u8"]
+[ext_resource type="Texture2D" uid="uid://n4w8q1lidh6f" path="res://World/Enemy/DesertEnemy/Scopio/ScopioAttack.png" id="1_qcrgb"]
+[ext_resource type="Texture2D" uid="uid://d81hkymsuclq" path="res://World/Enemy/DesertEnemy/Scopio/ScopioWalk.png" id="2_je4u8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8erxp"]
+atlas = ExtResource("1_qcrgb")
+region = Rect2(0, 0, 648, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8286"]
+atlas = ExtResource("1_qcrgb")
+region = Rect2(648, 0, 648, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5efl"]
+atlas = ExtResource("1_qcrgb")
+region = Rect2(1296, 0, 648, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wayjk"]
+atlas = ExtResource("1_qcrgb")
+region = Rect2(1944, 0, 648, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luow0"]
+atlas = ExtResource("2_je4u8")
+region = Rect2(0, 0, 624, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xu7k"]
+atlas = ExtResource("2_je4u8")
+region = Rect2(624, 0, 624, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14ky0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8erxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8286")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5efl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wayjk")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luow0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xu7k")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fa3dl"]
+radius = 8.0
+height = 44.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cotn0"]
+radius = 65.0692
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_je4u8"]
+radius = 232.019
+
+[node name="Scopio" type="CharacterBody2D"]
+script = ExtResource("1_je4u8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9, 2)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_14ky0")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fa3dl")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(7, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_cotn0")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_je4u8")
