@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1k67pr1k18rc"]
+
+[ext_resource type="Texture2D" uid="uid://djvxhu5xluy37" path="res://World/Enemy/Boss/Undying/Undying.png" id="1_ug1e5"]
+[ext_resource type="Script" uid="uid://j44am5hgb0uh" path="res://World/Enemy/Boss/Undying/Undying.gd" id="1_wbote"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbote"]
+size = Vector2(24, 56)
+
+[node name="Undying" type="CharacterBody2D"]
+z_index = 5
+script = ExtResource("1_wbote")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_ug1e5")
+vframes = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -3)
+shape = SubResource("RectangleShape2D_wbote")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -199.0
+offset_top = -95.0
+offset_right = 200.0
+offset_bottom = -68.0
