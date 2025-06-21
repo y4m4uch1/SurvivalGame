@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://dk0ktutautonb"]
+
+[ext_resource type="Texture2D" uid="uid://cxgb0rkwdrudj" path="res://World/Enemy/Boss/Unstoppable/UnstoppableTotem.png" id="1_royse"]
+[ext_resource type="Script" uid="uid://dd542li620335" path="res://World/Enemy/Boss/Unstoppable/unstoppable_totem.gd" id="1_u1uft"]
+[ext_resource type="PackedScene" uid="uid://c5g1j4w12wqqc" path="res://World/Enemy/Boss/Unstoppable/Unstoppable.tscn" id="2_bdjdt"]
+[ext_resource type="AudioStream" uid="uid://dtn0eaoluvp71" path="res://World/Enemy/Boss/Unstoppable/UnstoppableMusic1.wav" id="3_uxpfi"]
+[ext_resource type="AudioStream" uid="uid://cy1fpbl4jd2p5" path="res://World/Enemy/Boss/Unstoppable/UnstoppableMusic2.wav" id="4_k1gq6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u1uft"]
+radius = 5.0
+height = 62.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bdjdt"]
+size = Vector2(34, 62)
+
+[node name="BossTotem" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_u1uft")
+boss_scene = ExtResource("2_bdjdt")
+boss_music_tracks = Array[AudioStream]([ExtResource("3_uxpfi"), ExtResource("4_k1gq6")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("1_royse")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_u1uft")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_bdjdt")

@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5g1j4w12wqqc"]
+
+[ext_resource type="Script" uid="uid://bmmx6bylaikdh" path="res://World/Enemy/Boss/Unstoppable/Unstoppable.gd" id="1_6xqum"]
+[ext_resource type="Texture2D" uid="uid://dsmo1c4rblqjo" path="res://World/Enemy/Boss/Unstoppable/Unstoppable.png" id="2_sr0gg"]
+[ext_resource type="AudioStream" uid="uid://p346vhih16n" path="res://World/Enemy/Boss/Undefeated/UndefeatedRoar.wav" id="3_7080k"]
+[ext_resource type="AudioStream" uid="uid://bx5ppnoysn42d" path="res://World/Enemy/Boss/Undefeated/UndefeatedWalk.wav" id="4_1pyjq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h31ub"]
+radius = 22.3565
+height = 99.937
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7080k"]
+size = Vector2(294.5, 246.5)
+
+[node name="Unstoppable" type="CharacterBody2D"]
+z_index = 5
+script = ExtResource("1_6xqum")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_sr0gg")
+vframes = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -6)
+rotation = 0.16057
+shape = SubResource("CapsuleShape2D_h31ub")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -119.0
+offset_top = -90.0
+offset_right = 133.0
+offset_bottom = -63.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -5)
+shape = SubResource("RectangleShape2D_7080k")
+
+[node name="Roar" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7080k")
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1pyjq")
+
+[node name="Theme" type="AudioStreamPlayer2D" parent="."]
