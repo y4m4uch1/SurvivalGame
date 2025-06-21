@@ -1,0 +1,265 @@
+[gd_scene load_steps=35 format=3 uid="uid://ck1v6qg0osw2e"]
+
+[ext_resource type="Texture2D" uid="uid://cyq7taglmapdl" path="res://World/Sprites/tilemap.png" id="1_vdgnt"]
+[ext_resource type="Script" uid="uid://hpidaxafke1k" path="res://World/Scripts/world_generation.gd" id="2_3ql1f"]
+[ext_resource type="Script" uid="uid://b4nk84yk06her" path="res://World/Scripts/spawnObj.gd" id="2_y6flb"]
+[ext_resource type="PackedScene" uid="uid://7rrci6p1mrov" path="res://World/Tree/Tree.tscn" id="4_04mge"]
+[ext_resource type="PackedScene" uid="uid://edtvq20qffg0" path="res://World/Rock/Boulder.tscn" id="4_eue43"]
+[ext_resource type="PackedScene" uid="uid://bpy3r271cesl" path="res://GUI/Inventory/Item.tscn" id="4_il6x7"]
+[ext_resource type="PackedScene" uid="uid://dk4wsd7jxe1m" path="res://World/Bush/Bush.tscn" id="5_cf1t6"]
+[ext_resource type="Texture2D" uid="uid://brx4ka6taqv2x" path="res://World/Sprites/RainDrop.png" id="11_ecnql"]
+[ext_resource type="Script" uid="uid://cx0platrge6dh" path="res://World/Enemy/Slime/slime_spawner.gd" id="11_l2bp3"]
+[ext_resource type="PackedScene" uid="uid://5dupnhr4ipm8" path="res://World/Enemy/Slime/GreenSlime.tscn" id="12_kpwrl"]
+[ext_resource type="AudioStream" uid="uid://v34w0kv5oaue" path="res://World/Sprites/RainSound.wav" id="12_v0w7q"]
+[ext_resource type="Script" uid="uid://bujt7hy03n61t" path="res://World/Cow/cow_spawner.gd" id="13_21v8o"]
+[ext_resource type="Script" uid="uid://bx248x0lfekgc" path="res://World/Trader/traderspawn.gd" id="14_jacc8"]
+[ext_resource type="PackedScene" uid="uid://cxgbxklbxn8cl" path="res://World/Cow/Cow.tscn" id="14_lcvgy"]
+[ext_resource type="PackedScene" uid="uid://b2pgq0mjq2cwt" path="res://World/CopperOre/CopperOre.tscn" id="15_eucu0"]
+[ext_resource type="PackedScene" uid="uid://bkv1xnbdctcyu" path="res://World/Trader/Trader.tscn" id="16_7in0u"]
+[ext_resource type="Script" uid="uid://birdosrhvrqn1" path="res://World/Scripts/day_night_cycle.gd" id="16_hev0n"]
+[ext_resource type="PackedScene" uid="uid://cbdrcqx8nh4g2" path="res://World/TinOre/TinOre.tscn" id="18_2neov"]
+[ext_resource type="Script" uid="uid://dgx5x6foic666" path="res://World/Cave/cave_entrance_respawn.gd" id="18_vdgnt"]
+[ext_resource type="PackedScene" uid="uid://fyiurwgmgnjc" path="res://World/Cave/CaveEntrance.tscn" id="19_3ql1f"]
+[ext_resource type="Script" uid="uid://belahk227eobs" path="res://World/Enemy/Boss/Unstoppable/totem_spawn.gd" id="19_eucu0"]
+[ext_resource type="PackedScene" uid="uid://dk0ktutautonb" path="res://World/Enemy/Boss/Unstoppable/UnstoppableTotem.tscn" id="22_2neov"]
+[ext_resource type="Script" uid="uid://d1gmmrits51bs" path="res://Main/ObjectCulling.gd" id="23_c4j8x"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eucu0"]
+texture = ExtResource("1_vdgnt")
+1:6/0 = 0
+1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:14/0 = 0
+21:10/0 = 0
+19:13/0 = 0
+15:17/0 = 0
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:2/0 = 0
+0:1/animation_columns = 3
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_eucu0"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_eucu0")
+
+[sub_resource type="Curve" id="Curve_eucu0"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_c4j8x"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 2.4139), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2neov"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_daix3"]
+curve_x = SubResource("Curve_eucu0")
+curve_y = SubResource("Curve_c4j8x")
+curve_z = SubResource("Curve_2neov")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eucu0"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -200, 0)
+emission_shape = 3
+emission_box_extents = Vector3(350, 1, 1)
+gravity = Vector3(0, 3000, 0)
+scale_min = 0.2
+scale_over_velocity_curve = SubResource("CurveXYZTexture_daix3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ql1f"]
+size = Vector2(5, 4000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eucu0"]
+size = Vector2(5, 4800)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4j8x"]
+size = Vector2(5, 4000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2neov"]
+size = Vector2(5, 4800)
+
+[node name="World" type="TileMap"]
+z_index = -3
+y_sort_enabled = true
+tile_set = SubResource("TileSet_eucu0")
+format = 2
+script = ExtResource("2_3ql1f")
+
+[node name="DayNightWeather" type="Node2D" parent="."]
+script = ExtResource("16_hev0n")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="DayNightWeather"]
+
+[node name="DayNightTimer" type="Timer" parent="DayNightWeather"]
+
+[node name="RainTimer" type="Timer" parent="DayNightWeather"]
+
+[node name="CPUParticles2D" type="GPUParticles2D" parent="DayNightWeather"]
+z_index = 2
+position = Vector2(-2, -56)
+emitting = false
+amount = 100
+texture = ExtResource("11_ecnql")
+lifetime = 0.5
+preprocess = 0.5
+visibility_rect = Rect2(-350, -50, 700, 400)
+process_material = SubResource("ParticleProcessMaterial_eucu0")
+
+[node name="RainSound" type="AudioStreamPlayer2D" parent="DayNightWeather"]
+stream = ExtResource("12_v0w7q")
+
+[node name="TreeContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("2_y6flb")
+entity_scene = ExtResource("4_04mge")
+spawn_count = 620
+cluster_radius = 10.0
+can_respawn = true
+
+[node name="BushContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("2_y6flb")
+entity_scene = ExtResource("5_cf1t6")
+spawn_count = 650
+cluster_radius = 10.0
+can_respawn = true
+
+[node name="TreeLogContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("2_y6flb")
+entity_scene = ExtResource("4_il6x7")
+spawn_count = 100
+item_name = "TreeLog"
+can_respawn = true
+
+[node name="RockContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("2_y6flb")
+entity_scene = ExtResource("4_il6x7")
+spawn_count = 100
+item_name = "Rock"
+can_respawn = true
+
+[node name="CarrotContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("2_y6flb")
+entity_scene = ExtResource("4_il6x7")
+spawn_count = 30
+item_name = "Carrot"
+can_respawn = true
+
+[node name="SlimeContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("11_l2bp3")
+entity_scene = ExtResource("12_kpwrl")
+
+[node name="CowContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("13_21v8o")
+entity_scene = ExtResource("14_lcvgy")
+spawn_count = 7
+collision_radius = 1.0
+spawn_in_clusters = true
+min_entities_per_cluster = 5
+cluster_radius = 100.0
+respawn_time = 1800.0
+can_respawn = true
+
+[node name="FlowerContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("2_y6flb")
+entity_scene = ExtResource("4_il6x7")
+spawn_count = 40
+item_name = "RedFlower"
+can_respawn = true
+
+[node name="BoulderContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("2_y6flb")
+entity_scene = ExtResource("4_eue43")
+spawn_count = 570
+min_entities_per_cluster = 4
+cluster_radius = 10.0
+
+[node name="CopperOreContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("2_y6flb")
+entity_scene = ExtResource("15_eucu0")
+spawn_count = 450
+min_entities_per_cluster = 4
+cluster_radius = 10.0
+respawn_time = 3600.0
+
+[node name="TinOreContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("2_y6flb")
+entity_scene = ExtResource("18_2neov")
+spawn_count = 450
+min_entities_per_cluster = 4
+cluster_radius = 10.0
+respawn_time = 3600.0
+
+[node name="TraderContainer" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("14_jacc8")
+entity_scene = ExtResource("16_7in0u")
+
+[node name="BossTotemContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("19_eucu0")
+entity_scene = ExtResource("22_2neov")
+
+[node name="CaveEntranceContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("18_vdgnt")
+entity_scene = ExtResource("19_3ql1f")
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(-3, 2000)
+shape = SubResource("RectangleShape2D_3ql1f")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(2400, -3)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_eucu0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(4803, 2000)
+shape = SubResource("RectangleShape2D_c4j8x")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(2400, 4003)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2neov")
+
+[node name="OtherContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+
+[node name="ObjectCulling" type="Node2D" parent="."]
+script = ExtResource("23_c4j8x")

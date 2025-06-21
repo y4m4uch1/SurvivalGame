@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://edtvq20qffg0"]
+
+[ext_resource type="Script" uid="uid://drp1i6rjhwjh8" path="res://World/Rock/boulder_mine.gd" id="1_6y1i1"]
+[ext_resource type="Texture2D" uid="uid://ptargtcri0v" path="res://World/Rock/Sprites/Boulder.png" id="1_ojeqw"]
+[ext_resource type="AudioStream" uid="uid://8et3myteoxcl" path="res://World/Rock/HittingRockSound.wav" id="3_ltoti"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6uebh"]
+radius = 18.1108
+
+[node name="Rock" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_6y1i1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1, -2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ojeqw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -1)
+shape = SubResource("CircleShape2D_6uebh")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ltoti")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbdrcqx8nh4g2"]
+
+[ext_resource type="Script" uid="uid://cmtdwtw3lb48i" path="res://World/TinOre/tin_mine.gd" id="1_kbavd"]
+[ext_resource type="Texture2D" uid="uid://b4b2dd82fjbyp" path="res://World/TinOre/TinOre.png" id="2_g7o2e"]
+[ext_resource type="AudioStream" uid="uid://8et3myteoxcl" path="res://World/Rock/HittingRockSound.wav" id="3_g7o2e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tkjc0"]
+radius = 16.0
+
+[node name="TinOre" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_kbavd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1, 9.53674e-07)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_g7o2e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 2)
+shape = SubResource("CircleShape2D_tkjc0")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g7o2e")

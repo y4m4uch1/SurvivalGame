@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk4wsd7jxe1m"]
+
+[ext_resource type="Script" uid="uid://do0vbkjo572yk" path="res://World/Bush/bush_loot.gd" id="1_l12w0"]
+[ext_resource type="Texture2D" uid="uid://bpxvqeklt38uc" path="res://World/Bush/Sprites/bush.png" id="1_vj76j"]
+[ext_resource type="Shader" uid="uid://ml51yu4uiitr" path="res://World/Bush/Bush.gdshader" id="2_11tv0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_exsw8"]
+shader = ExtResource("2_11tv0")
+
+[node name="Bush" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_l12w0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_exsw8")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_vj76j")

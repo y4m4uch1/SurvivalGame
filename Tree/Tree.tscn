@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://7rrci6p1mrov"]
+
+[ext_resource type="Texture2D" uid="uid://uhuwstoxknc" path="res://World/Tree/Sprites/tree.png" id="1_rqqiq"]
+[ext_resource type="Script" uid="uid://q1gjkixii2u8" path="res://World/Tree/tree_chop.gd" id="1_wb8bo"]
+[ext_resource type="Shader" uid="uid://ddnqusnxwgu58" path="res://World/Tree/Tree.gdshader" id="2_iw4hk"]
+[ext_resource type="AudioStream" uid="uid://1ythue28wlr4" path="res://World/Tree/HittingTreeSound.wav" id="3_gu62u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vk8eq"]
+shader = ExtResource("2_iw4hk")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqqiq"]
+size = Vector2(6, 31)
+
+[node name="Tree" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_wb8bo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_vk8eq")
+position = Vector2(0, 28)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("1_rqqiq")
+offset = Vector2(0, -700)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_rqqiq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gu62u")

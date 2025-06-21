@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxgbxklbxn8cl"]
+
+[ext_resource type="Script" uid="uid://dcuieh1udl5wh" path="res://World/Cow/cow.gd" id="1_w277a"]
+[ext_resource type="Texture2D" uid="uid://dvnc5kdpw0mgi" path="res://World/Cow/Cow.png" id="1_weewt"]
+[ext_resource type="AudioStream" uid="uid://bjh1hkvqihfho" path="res://World/Cow/CowMoo.wav" id="3_a8mbo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a8mbo"]
+radius = 15.0
+height = 44.0
+
+[node name="Cow" type="CharacterBody2D"]
+y_sort_enabled = true
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_w277a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_weewt")
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+shape = SubResource("CapsuleShape2D_a8mbo")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+y_sort_enabled = true
+stream = ExtResource("3_a8mbo")
+volume_db = 12.0
+pitch_scale = 0.85
+attenuation = 0.68302
+max_polyphony = 3
+panning_strength = 0.6
