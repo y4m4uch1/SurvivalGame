@@ -1,0 +1,126 @@
+[gd_scene load_steps=13 format=3 uid="uid://8rpaegcosaot"]
+
+[ext_resource type="Script" uid="uid://cao3s3lfwvrg8" path="res://Main/script_main.gd" id="1_rj11h"]
+[ext_resource type="PackedScene" uid="uid://ck1v6qg0osw2e" path="res://World/World.tscn" id="2_f6fdm"]
+[ext_resource type="PackedScene" uid="uid://duey3u6yr7fha" path="res://World/Cave/CaveWorld.tscn" id="2_rj11h"]
+[ext_resource type="PackedScene" uid="uid://crfi0aa63lb5j" path="res://World/Swamp/SwampWorld.tscn" id="3_f3gf5"]
+[ext_resource type="PackedScene" uid="uid://dnhfcr11qhbg0" path="res://GUI/Inventory/InventoryUI.tscn" id="3_rj11h"]
+[ext_resource type="PackedScene" uid="uid://bnfsqrf6hicax" path="res://Player/player.tscn" id="4_qac2q"]
+[ext_resource type="PackedScene" uid="uid://dju1fhto78quf" path="res://GUI/Pause/PauseMenu.tscn" id="5_o60nc"]
+[ext_resource type="PackedScene" uid="uid://hkix2cc3bgsg" path="res://World/Desert/DesertWorld.tscn" id="5_rix8b"]
+[ext_resource type="PackedScene" uid="uid://gybb53g2nhg7" path="res://GUI/CraftingSystem/CraftingUI.tscn" id="6_f3gf5"]
+[ext_resource type="PackedScene" uid="uid://kx3pr0ixmpi5" path="res://GUI/Chest/ChestUI.tscn" id="7_ib3t1"]
+[ext_resource type="PackedScene" uid="uid://ev0yay4eq5o4" path="res://GUI/Map/Map.tscn" id="7_rix8b"]
+[ext_resource type="PackedScene" uid="uid://b7iu4rtieje1q" path="res://GUI/Trader/TraderUI.tscn" id="8_f6fdm"]
+
+[node name="Ground" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_rj11h")
+
+[node name="World" parent="." instance=ExtResource("2_f6fdm")]
+
+[node name="SwampWorld" parent="." instance=ExtResource("3_f3gf5")]
+
+[node name="CaveWorld" parent="." instance=ExtResource("2_rj11h")]
+z_index = -1
+
+[node name="DesertWorld" parent="." instance=ExtResource("5_rix8b")]
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("4_qac2q")]
+position = Vector2(490, 311)
+
+[node name="MapView" parent="." instance=ExtResource("7_rix8b")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 300.0
+grow_vertical = 0
+value = 100.0
+show_percentage = false
+
+[node name="HungerBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -54.0
+offset_right = 300.0
+offset_bottom = -27.0
+grow_vertical = 0
+value = 100.0
+show_percentage = false
+
+[node name="ThirstBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -81.0
+offset_right = 300.0
+offset_bottom = -54.0
+grow_vertical = 0
+value = 100.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 52.0
+grow_vertical = 0
+
+[node name="HungerLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = -27.0
+grow_vertical = 0
+
+[node name="ThirstLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -77.0
+offset_right = 40.0
+offset_bottom = -54.0
+grow_vertical = 0
+
+[node name="NotificationLabel" type="Label" parent="CanvasLayer"]
+z_index = 4
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_right = 0.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+
+[node name="Day" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -43.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Day 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="InventoryUI" parent="." instance=ExtResource("3_rj11h")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_o60nc")]
+
+[node name="CraftingUI" parent="." instance=ExtResource("6_f3gf5")]
+
+[node name="ChestUI" parent="." instance=ExtResource("7_ib3t1")]
+
+[node name="TraderUI" parent="." instance=ExtResource("8_f6fdm")]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
