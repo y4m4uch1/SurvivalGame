@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6m4qlv2cnykd"]
+
+[ext_resource type="Script" uid="uid://c6my7p43mklw7" path="res://World/Cave/GoldOre/gold_mine.gd" id="1_ss7y6"]
+[ext_resource type="Texture2D" uid="uid://dsa0a7rukt7gt" path="res://World/Cave/GoldOre/Sprites/GoldOre.png" id="2_efplg"]
+[ext_resource type="AudioStream" uid="uid://8et3myteoxcl" path="res://World/Rock/HittingRockSound.wav" id="3_efplg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_caxl8"]
+radius = 17.0
+
+[node name="GoldOre" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_ss7y6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_efplg")
+offset = Vector2(0, 35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_caxl8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_efplg")

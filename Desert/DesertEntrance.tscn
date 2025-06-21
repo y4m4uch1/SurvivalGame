@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://bb7in8350u7yk"]
+
+[ext_resource type="Script" uid="uid://cypj4ul816k1b" path="res://World/Desert/Scripts/desert_entrance.gd" id="1_efeih"]
+[ext_resource type="Texture2D" uid="uid://nwdggnvinyok" path="res://World/Desert/Sprites/DesertEntrance.png" id="1_haug1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efeih"]
+atlas = ExtResource("1_haug1")
+region = Rect2(0, 0, 672, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5fo6"]
+atlas = ExtResource("1_haug1")
+region = Rect2(672, 0, 672, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw7tf"]
+atlas = ExtResource("1_haug1")
+region = Rect2(1344, 0, 672, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4c78"]
+atlas = ExtResource("1_haug1")
+region = Rect2(2016, 0, 672, 800)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mh4rq"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_efeih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5fo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw7tf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4c78")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efeih"]
+radius = 20.0
+height = 52.0
+
+[node name="DesertEntrance" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_efeih")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, 6)
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_mh4rq")
+frame_progress = 0.121292
+speed_scale = 0.5
+offset = Vector2(0, -80)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 1)
+shape = SubResource("CapsuleShape2D_efeih")

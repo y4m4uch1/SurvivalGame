@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://by2y40x0vujxr"]
+
+[ext_resource type="Shader" uid="uid://drs4y0ww82odq" path="res://World/Desert/Cactus/Cactus.gdshader" id="1_fnw5t"]
+[ext_resource type="Script" uid="uid://ddar2sc6crkun" path="res://World/Desert/Cactus/cactus.gd" id="1_w0iu6"]
+[ext_resource type="Texture2D" uid="uid://bsgd4nyafvd7b" path="res://World/Desert/Cactus/Cactus.png" id="2_w0iu6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2yoj0"]
+shader = ExtResource("1_fnw5t")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0oaao"]
+radius = 18.0278
+
+[node name="Cactus" type="StaticBody2D"]
+script = ExtResource("1_w0iu6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_2yoj0")
+position = Vector2(1, -1.90735e-06)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_w0iu6")
+offset = Vector2(0, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_0oaao")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

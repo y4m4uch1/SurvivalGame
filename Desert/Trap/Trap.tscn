@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck70wegtplw5n"]
+
+[ext_resource type="Script" uid="uid://55hqld42edyv" path="res://World/Desert/Trap/trap.gd" id="1_gdder"]
+[ext_resource type="Texture2D" uid="uid://g20ayhkbnauc" path="res://World/Desert/Trap/Trap.png" id="2_mudvi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0qt1"]
+size = Vector2(415, 351)
+
+[node name="Trap" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_gdder")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -15)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_mudvi")
+offset = Vector2(0, 190)
+hframes = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.08, 0.08)
+shape = SubResource("RectangleShape2D_t0qt1")

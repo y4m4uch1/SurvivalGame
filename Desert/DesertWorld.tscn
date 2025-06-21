@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://hkix2cc3bgsg"]
+
+[ext_resource type="Texture2D" uid="uid://bs55wflo6g0ta" path="res://World/Desert/Sprites/DesertTileSet.png" id="1_wwudi"]
+[ext_resource type="Script" uid="uid://ckphsjik4dj2u" path="res://World/Desert/Scripts/desert_generation.gd" id="2_i748o"]
+[ext_resource type="Script" uid="uid://baxkyx023ad62" path="res://World/Desert/Scripts/spawn_desert_obj.gd" id="3_p58e0"]
+[ext_resource type="PackedScene" uid="uid://d2fm46sohsym5" path="res://World/Enemy/DesertEnemy/Skeleton/Skeleton.tscn" id="4_awno5"]
+[ext_resource type="PackedScene" uid="uid://cgqkpk5e01kah" path="res://World/Enemy/DesertEnemy/Scopio/Scopio.tscn" id="5_l18hg"]
+[ext_resource type="PackedScene" uid="uid://by2y40x0vujxr" path="res://World/Desert/Cactus/Cactus.tscn" id="6_awno5"]
+[ext_resource type="PackedScene" uid="uid://b6m4qlv2cnykd" path="res://World/Desert/GoldOre/GoldOre.tscn" id="7_l18hg"]
+[ext_resource type="PackedScene" uid="uid://ck70wegtplw5n" path="res://World/Desert/Trap/Trap.tscn" id="8_l8noe"]
+[ext_resource type="PackedScene" uid="uid://c8y1nqynqoqul" path="res://World/Desert/Treasure/Treasure.tscn" id="8_y336a"]
+[ext_resource type="PackedScene" uid="uid://cdaefhpa8rgbj" path="res://World/Swamp/SilverOre/SilverOre.tscn" id="9_5p1hb"]
+[ext_resource type="PackedScene" uid="uid://d2yvm5utkyjsw" path="res://World/Desert/Sand/SandPile.tscn" id="11_n0gip"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i748o"]
+texture = ExtResource("1_wwudi")
+10:6/0 = 0
+12:6/0 = 0
+14:6/0 = 0
+15:10/0 = 0
+14:11/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lg4q2"]
+sources/0 = SubResource("TileSetAtlasSource_i748o")
+
+[node name="DesertWorld" type="TileMap"]
+z_index = -3
+y_sort_enabled = true
+tile_set = SubResource("TileSet_lg4q2")
+format = 2
+script = ExtResource("2_i748o")
+
+[node name="SkeletonContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_p58e0")
+entity_scene = ExtResource("4_awno5")
+
+[node name="ScopioContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_p58e0")
+entity_scene = ExtResource("5_l18hg")
+
+[node name="CactusContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_p58e0")
+entity_scene = ExtResource("6_awno5")
+
+[node name="GoldContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_p58e0")
+entity_scene = ExtResource("7_l18hg")
+spawn_count = 20
+
+[node name="TreasureContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_p58e0")
+entity_scene = ExtResource("8_y336a")
+spawn_count = 100
+
+[node name="SilverContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_p58e0")
+entity_scene = ExtResource("9_5p1hb")
+
+[node name="TrapContainer" type="Node2D" parent="."]
+z_index = -2
+y_sort_enabled = true
+script = ExtResource("3_p58e0")
+entity_scene = ExtResource("8_l8noe")
+spawn_count = 200
+
+[node name="SandContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_p58e0")
+entity_scene = ExtResource("11_n0gip")
+
+[node name="OtherContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
