@@ -1,0 +1,180 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnhfcr11qhbg0"]
+
+[ext_resource type="Script" uid="uid://bll6xcvk7itnb" path="res://GUI/Inventory/inventoryUI.gd" id="1_ra1if"]
+
+[node name="InventoryUI" type="CanvasLayer"]
+script = ExtResource("1_ra1if")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 879.0
+offset_bottom = 502.0
+color = Color(0.530263, 0.400565, 0.239822, 1)
+
+[node name="Inventory" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 16.0
+offset_right = 714.0
+offset_bottom = 39.0
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Damage" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 387.0
+offset_right = 95.0
+offset_bottom = 410.0
+text = "Damage"
+
+[node name="Defense" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 419.0
+offset_right = 129.0
+offset_bottom = 451.0
+text = "Defense"
+
+[node name="MoveSpeed" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 450.0
+offset_right = 114.0
+offset_bottom = 473.0
+text = "Move speed"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 54.0
+offset_right = 861.0
+offset_bottom = 397.0
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/ScrollContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Armorlbl" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 140.0
+offset_right = 190.0
+offset_bottom = 163.0
+text = "Armor"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Weaponlbl" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 143.0
+offset_right = 307.0
+offset_bottom = 166.0
+text = "Weapon"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Helmetlbl" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 7.0
+offset_right = 195.0
+offset_bottom = 33.0
+text = "Helmet"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Backpacklbl" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 142.0
+offset_right = 99.0
+offset_bottom = 165.0
+text = "Backpack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shoeslbl" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 268.0
+offset_right = 190.0
+offset_bottom = 291.0
+text = "Shoes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Helmet" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 42.0
+offset_right = 195.0
+offset_bottom = 112.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Armor" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 174.0
+offset_right = 198.0
+offset_bottom = 244.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Weapon" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 177.0
+offset_right = 308.0
+offset_bottom = 247.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Backpack" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 175.0
+offset_right = 95.0
+offset_bottom = 245.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Shoes" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 299.0
+offset_right = 202.0
+offset_bottom = 369.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -331.0
+offset_top = 184.0
+offset_right = -175.0
+offset_bottom = 236.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Use" type="Button" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Use"
+
+[node name="Drop" type="Button" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Drop"
+
+[node name="Split" type="Button" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Split"
