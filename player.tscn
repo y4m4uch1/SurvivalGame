@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnfsqrf6hicax"]
+
+[ext_resource type="Script" uid="uid://dplglx34dwwb5" path="res://Player/Scripts/player.gd" id="1_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://cb8p6wsln458q" path="res://Player/Sprites/Head.png" id="2_fhl08"]
+[ext_resource type="Texture2D" uid="uid://pdb44jrnfwko" path="res://Player/Sprites/Body.png" id="3_vtle1"]
+[ext_resource type="AudioStream" uid="uid://cwtdfncqdxa1r" path="res://Player/Sprites/walkingsound.wav" id="5_k53q1"]
+[ext_resource type="Texture2D" uid="uid://ccf4cpktigttd" path="res://Player/Weapon/StoneSword.png" id="5_vtle1"]
+[ext_resource type="AudioStream" uid="uid://beov875si544q" path="res://Player/AttackSound.wav" id="6_fhl08"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
+radius = 8.0
+height = 18.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btcbx"]
+radius = 8.0
+height = 18.0
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_4ntmi")
+
+[node name="Head" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 2.85)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_fhl08")
+offset = Vector2(0, -400)
+hframes = 2
+vframes = 2
+
+[node name="Body" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 2.88)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("3_vtle1")
+hframes = 2
+vframes = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_4ntmi")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_btcbx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_k53q1")
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_fhl08")
+
+[node name="Weapon" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -1.5)
+
+[node name="Weapon" type="Sprite2D" parent="Weapon"]
+y_sort_enabled = true
+position = Vector2(29.2, 0)
+rotation = 1.57079
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("5_vtle1")
+offset = Vector2(0, 500)
+
+[node name="AttackHitbox" type="Area2D" parent="Weapon"]
+
+[node name="HitboxCollisionShape" type="CollisionShape2D" parent="Weapon/AttackHitbox"]
+
+[node name="Weapon2" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Weapon" type="Sprite2D" parent="Weapon2"]
+y_sort_enabled = true
+position = Vector2(2, 3)
+rotation = 0.628319
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("5_vtle1")
+offset = Vector2(0, -500)
+
+[node name="AttackHitbox" type="Area2D" parent="Weapon2"]
+
+[node name="HitboxCollisionShape" type="CollisionShape2D" parent="Weapon2/AttackHitbox"]
