@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://ba7d8djdrdrwe"]
+
+[ext_resource type="Script" uid="uid://4ygx215mwyjy" path="res://World/Swamp/SwampTree/swamp_tree.gd" id="1_w4ajp"]
+[ext_resource type="Shader" uid="uid://cmtty6cdegqfk" path="res://World/Swamp/SwampTree/SwampTree.gdshader" id="2_g4hhb"]
+[ext_resource type="Texture2D" uid="uid://dubg8nm4lxcb3" path="res://World/Swamp/SwampTree/SwampTree.png" id="2_w08ng"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbis8"]
+shader = ExtResource("2_g4hhb")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4hhb"]
+size = Vector2(4.40415, 70.5788)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bbis8"]
+height = 64.0
+
+[node name="SwampTree" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_w4ajp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bbis8")
+position = Vector2(-1, 60)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_w08ng")
+offset = Vector2(0, -150)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8.90561, 40.5658)
+rotation = 2.73842
+shape = SubResource("RectangleShape2D_g4hhb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(4, 40)
+rotation = 3.54127
+shape = SubResource("RectangleShape2D_g4hhb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(1, 41)
+shape = SubResource("CapsuleShape2D_bbis8")

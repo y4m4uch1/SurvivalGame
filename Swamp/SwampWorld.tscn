@@ -1,0 +1,146 @@
+[gd_scene load_steps=18 format=3 uid="uid://crfi0aa63lb5j"]
+
+[ext_resource type="Texture2D" uid="uid://bvpeurvispddr" path="res://World/Swamp/Sprites/SwampTileSet.png" id="1_fi88q"]
+[ext_resource type="Script" uid="uid://n45dgkjp83xy" path="res://World/Swamp/Script/swamp_generation.gd" id="2_ot2aw"]
+[ext_resource type="Script" uid="uid://dv4emi4dji581" path="res://World/Swamp/Script/spawn_swamp_obj.gd" id="3_ixcoi"]
+[ext_resource type="PackedScene" uid="uid://b0m2g2bjghksh" path="res://World/Swamp/SwampEntrance.tscn" id="4_m58xs"]
+[ext_resource type="PackedScene" uid="uid://bpy3r271cesl" path="res://GUI/Inventory/Item.tscn" id="5_m58xs"]
+[ext_resource type="PackedScene" uid="uid://ba7d8djdrdrwe" path="res://World/Swamp/SwampTree/SwampTree.tscn" id="6_njcwd"]
+[ext_resource type="PackedScene" uid="uid://cdaefhpa8rgbj" path="res://World/Swamp/SilverOre/SilverOre.tscn" id="7_2nnka"]
+[ext_resource type="PackedScene" uid="uid://drnvyugaou576" path="res://World/Swamp/Mud/MudPile.tscn" id="8_x5h0q"]
+[ext_resource type="PackedScene" uid="uid://bo36vdctjeds4" path="res://World/Swamp/VineTree/VineTree.tscn" id="9_rw1pa"]
+[ext_resource type="PackedScene" uid="uid://ciki4wi0io3oe" path="res://World/Enemy/SwampEnemy/Scenes/Centipede.tscn" id="10_fi88q"]
+[ext_resource type="PackedScene" uid="uid://co4ant1vyo5yt" path="res://World/Enemy/Boss/Undead/UndeadTotem.tscn" id="11_fh3uq"]
+[ext_resource type="PackedScene" uid="uid://edtvq20qffg0" path="res://World/Rock/Boulder.tscn" id="12_qf57i"]
+[ext_resource type="PackedScene" uid="uid://cbdrcqx8nh4g2" path="res://World/TinOre/TinOre.tscn" id="13_qah1c"]
+[ext_resource type="PackedScene" uid="uid://b2pgq0mjq2cwt" path="res://World/CopperOre/CopperOre.tscn" id="14_y8rmv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fh3uq"]
+texture = ExtResource("1_fi88q")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/animation_columns = 3
+4:0/animation_frame_0/duration = 1.0
+4:0/animation_frame_1/duration = 1.0
+4:0/animation_frame_2/duration = 1.0
+4:0/0 = 0
+7:0/animation_columns = 3
+7:0/animation_frame_0/duration = 1.0
+7:0/animation_frame_1/duration = 1.0
+7:0/animation_frame_2/duration = 1.0
+7:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ot2aw"]
+sources/0 = SubResource("TileSetAtlasSource_fh3uq")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fdei"]
+size = Vector2(2.5, 3207.94)
+
+[node name="SwampWorld" type="TileMap"]
+z_index = -3
+y_sort_enabled = true
+tile_set = SubResource("TileSet_ot2aw")
+format = 2
+script = ExtResource("2_ot2aw")
+
+[node name="SwampEntrance" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("3_ixcoi")
+entity_scene = ExtResource("4_m58xs")
+spawn_coordinates = Array[Vector2]([Vector2(20, 20)])
+spawn_count = 1
+
+[node name="MushroomContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_ixcoi")
+entity_scene = ExtResource("5_m58xs")
+item_name = "Mushroom"
+
+[node name="SwampTreeContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_ixcoi")
+entity_scene = ExtResource("6_njcwd")
+spawn_count = 200
+
+[node name="SilverContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_ixcoi")
+entity_scene = ExtResource("7_2nnka")
+spawn_count = 100
+
+[node name="MudContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_ixcoi")
+entity_scene = ExtResource("8_x5h0q")
+
+[node name="VineTreeContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_ixcoi")
+entity_scene = ExtResource("9_rw1pa")
+spawn_count = 100
+
+[node name="CentipedeContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_ixcoi")
+entity_scene = ExtResource("10_fi88q")
+spawn_count = 50
+
+[node name="BossTotemContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_ixcoi")
+entity_scene = ExtResource("11_fh3uq")
+spawn_count = 100
+
+[node name="BoulderContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_ixcoi")
+entity_scene = ExtResource("12_qf57i")
+spawn_count = 80
+
+[node name="TinContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_ixcoi")
+entity_scene = ExtResource("13_qah1c")
+spawn_count = 80
+
+[node name="CopperContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("3_ixcoi")
+entity_scene = ExtResource("14_y8rmv")
+spawn_count = 80
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(-3, 1600.03)
+shape = SubResource("RectangleShape2D_0fdei")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(1601, 3194)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_0fdei")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(1601, -4)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_0fdei")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(3203, 1599)
+shape = SubResource("RectangleShape2D_0fdei")
+
+[node name="OtherContainer" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true

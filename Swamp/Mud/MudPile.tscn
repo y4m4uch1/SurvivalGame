@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://drnvyugaou576"]
+
+[ext_resource type="Texture2D" uid="uid://cbp7l7mwhjjp" path="res://World/Swamp/Mud/MudPile.png" id="1_e3bsq"]
+[ext_resource type="Script" uid="uid://4kjnw55tfe0d" path="res://World/Swamp/Mud/mud_mine.gd" id="1_e6n6q"]
+[ext_resource type="AudioStream" uid="uid://cjlgksb3dtqgf" path="res://World/Swamp/Mud/ShovelMudSound.wav" id="3_844do"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_e6n6q"]
+a = Vector2(-17.5, 4.5)
+b = Vector2(18.5, 58.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_uknf4"]
+a = Vector2(16, 27)
+b = Vector2(1, 56)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2rcik"]
+a = Vector2(-29, 27)
+b = Vector2(61, 15)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3gudb"]
+a = Vector2(-6, -28)
+b = Vector2(61, 14)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82kmi"]
+radius = 20.024
+height = 79.775
+
+[node name="MudPile" type="StaticBody2D"]
+script = ExtResource("1_e6n6q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -27)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_e3bsq")
+offset = Vector2(0, 55)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, -9.5)
+rotation = 1.5708
+shape = SubResource("SegmentShape2D_e6n6q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 10)
+rotation = 1.5708
+shape = SubResource("SegmentShape2D_uknf4")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_2rcik")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_3gudb")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_82kmi")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_844do")

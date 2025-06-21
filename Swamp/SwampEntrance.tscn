@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0m2g2bjghksh"]
+
+[ext_resource type="Script" uid="uid://brsej4esggp3o" path="res://World/Swamp/Script/swamp_entrance.gd" id="1_x41fm"]
+[ext_resource type="Texture2D" uid="uid://dq8y1vn51h8s0" path="res://World/Swamp/Sprites/SwampEntrance.png" id="2_pbskq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x41fm"]
+atlas = ExtResource("2_pbskq")
+region = Rect2(0, 0, 544, 704)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbskq"]
+atlas = ExtResource("2_pbskq")
+region = Rect2(544, 0, 544, 704)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkucg"]
+atlas = ExtResource("2_pbskq")
+region = Rect2(1088, 0, 544, 704)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65raq"]
+atlas = ExtResource("2_pbskq")
+region = Rect2(1632, 0, 544, 704)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e5rbo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x41fm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbskq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkucg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65raq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o1iqn"]
+radius = 17.0
+height = 48.0
+
+[node name="SwampEntrance" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_x41fm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.01948e-28, 8)
+scale = Vector2(0.09, 0.09)
+sprite_frames = SubResource("SpriteFrames_e5rbo")
+frame_progress = 0.608217
+offset = Vector2(0, -80)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, -1)
+shape = SubResource("CapsuleShape2D_o1iqn")
