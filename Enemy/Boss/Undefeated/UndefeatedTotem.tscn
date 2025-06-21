@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://j5wowlvpitml"]
+
+[ext_resource type="Script" uid="uid://x2fjjadqfrh5" path="res://World/Enemy/Boss/Undefeated/undefeated_totem.gd" id="1_6y6tf"]
+[ext_resource type="Texture2D" uid="uid://dmkif01juvt6" path="res://World/Enemy/Boss/Undefeated/undefeatedTotem.png" id="1_u5ujb"]
+[ext_resource type="PackedScene" uid="uid://c36kitrqc3j5t" path="res://World/Enemy/Boss/Undefeated/Undefeated.tscn" id="2_h1ikq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6y6tf"]
+radius = 5.0
+height = 64.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ikq"]
+size = Vector2(42, 63)
+
+[node name="UndefeatedTotem" type="StaticBody2D"]
+script = ExtResource("1_6y6tf")
+boss_scene = ExtResource("2_h1ikq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_u5ujb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6y6tf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_h1ikq")

@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://buoqor0lp72rr"]
+
+[ext_resource type="Script" uid="uid://rbiqeyi1k2fa" path="res://World/Enemy/Boss/Undefeated/projectile.gd" id="1_7reqq"]
+[ext_resource type="Texture2D" uid="uid://ckfrrxmrrx8bo" path="res://World/Enemy/Boss/Undefeated/UndefeatedProjectile.png" id="1_cgtum"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7reqq"]
+atlas = ExtResource("1_cgtum")
+region = Rect2(0, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rah0i"]
+atlas = ExtResource("1_cgtum")
+region = Rect2(0, 120, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w28wo"]
+atlas = ExtResource("1_cgtum")
+region = Rect2(0, 240, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l41eb"]
+atlas = ExtResource("1_cgtum")
+region = Rect2(0, 360, 120, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tpc8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7reqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rah0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w28wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l41eb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8xsw"]
+radius = 5.0
+
+[node name="Projectile" type="CharacterBody2D"]
+z_index = 6
+script = ExtResource("1_7reqq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_tpc8t")
+frame_progress = 0.0722058
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_c8xsw")
