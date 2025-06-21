@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkv1xnbdctcyu"]
+
+[ext_resource type="Texture2D" uid="uid://ckx7kyqcn0aky" path="res://World/Trader/Trader.png" id="1_qvxg0"]
+[ext_resource type="Script" uid="uid://da4xtq7xm3um1" path="res://World/Trader/trader.gd" id="1_snv4j"]
+[ext_resource type="AudioStream" uid="uid://cmpdojjo66ygx" path="res://World/Trader/hellothere.wav" id="3_qa1tv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvxg0"]
+size = Vector2(81, 61)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qvxg0"]
+radius = 58.0086
+
+[node name="Trader" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_snv4j")
+metadata/structure_name = "Trader"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qvxg0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-29.5, -5.5)
+shape = SubResource("RectangleShape2D_qvxg0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-29, -5)
+shape = SubResource("CircleShape2D_qvxg0")
+
+[node name="HelloSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qa1tv")
