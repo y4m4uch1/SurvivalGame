@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckcbw33fce7l3"]
+
+[ext_resource type="Texture2D" uid="uid://dhte88ijp8mi1" path="res://GUI/CraftingSystem/Sprites/CarrotFarm.png" id="1_65hfv"]
+[ext_resource type="Script" uid="uid://c6ia3bu8ehqci" path="res://GUI/CraftingSystem/Scripts/carrot_farm.gd" id="1_hxj32"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hxj32"]
+radius = 22.0
+
+[node name="CarrotFarm" type="StaticBody2D"]
+script = ExtResource("1_hxj32")
+max_health = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_65hfv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_hxj32")

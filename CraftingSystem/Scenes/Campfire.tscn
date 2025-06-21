@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://xag4rq4lcddy"]
+
+[ext_resource type="Script" uid="uid://m2adxnnidtm4" path="res://GUI/CraftingSystem/Scripts/campfire.gd" id="1_nllbi"]
+[ext_resource type="Texture2D" uid="uid://bsqwbtdwlpuqe" path="res://GUI/CraftingSystem/Sprites/Campfire1.png" id="2_nllbi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nllbi"]
+atlas = ExtResource("2_nllbi")
+region = Rect2(0, 0, 1800, 1870)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgw05"]
+atlas = ExtResource("2_nllbi")
+region = Rect2(1800, 0, 1800, 1870)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8r3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nllbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgw05")
+}],
+"loop": true,
+"name": &"fire_animation",
+"speed": 2.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nllbi"]
+radius = 7.0
+height = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tgw05"]
+radius = 22.0
+
+[node name="Campfire" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_nllbi")
+
+[node name="AnimationPlayer2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.98023e-08, 14)
+scale = Vector2(0.015, 0.015)
+sprite_frames = SubResource("SpriteFrames_j8r3a")
+animation = &"fire_animation"
+frame_progress = 0.0156274
+offset = Vector2(0, -1000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nllbi")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_tgw05")

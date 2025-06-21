@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl5bp5j5l6v3g"]
+
+[ext_resource type="Script" uid="uid://dy5h2476c6q5c" path="res://GUI/CraftingSystem/Scripts/smelter.gd" id="1_1063y"]
+[ext_resource type="Texture2D" uid="uid://csens1jqa4c1g" path="res://GUI/CraftingSystem/Sprites/Smelter.png" id="1_dfam4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1063y"]
+radius = 13.0
+
+[node name="Smelter" type="StaticBody2D"]
+script = ExtResource("1_1063y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("1_dfam4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_1063y")
