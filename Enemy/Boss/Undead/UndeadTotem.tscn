@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://co4ant1vyo5yt"]
+
+[ext_resource type="Script" uid="uid://boc2mdv7l1nw3" path="res://World/Enemy/Boss/Undead/undead_totem.gd" id="1_0af81"]
+[ext_resource type="Texture2D" uid="uid://bvho1pb3pk5vo" path="res://World/Enemy/Boss/Undead/UndeadTotem.png" id="1_uqsmv"]
+[ext_resource type="PackedScene" uid="uid://cj3rfi0cqao8p" path="res://World/Enemy/Boss/Undead/Undead.tscn" id="2_6m67l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dhtb7"]
+height = 56.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0af81"]
+radius = 43.0465
+
+[node name="UndeadTotem" type="StaticBody2D"]
+script = ExtResource("1_0af81")
+boss_scene = ExtResource("2_6m67l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_uqsmv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_dhtb7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0af81")
